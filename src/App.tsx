@@ -7,6 +7,7 @@ import CardAdd from './pages/CardAdd';
 import CardEdit from './pages/CardEdit';
 import ProfilePage from './pages/ProfilePage';
 import Layout from './components/Layout';
+import Dashboard from "./pages/Dashboard"
 
 
 const App: React.FC = () => {
@@ -17,6 +18,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/cardAdd" element={<CardAdd />} />
           <Route path="/cardEdit" element={<CardEdit />} />
