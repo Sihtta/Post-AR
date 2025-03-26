@@ -18,9 +18,8 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <h1 className={styles.logo}>Post AR</h1>
       <div className={styles.links}>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/cards" className={`${styles.link} ${location.pathname === '/cards' ? styles.active : ''}`}>
-          <FaRegCreditCard /> Cards
+        <Link to="/dashboard" className={`${styles.link} ${location.pathname === '/dashboard' ? styles.active : ''}`}>
+          <FaRegCreditCard /> Dashboard
         </Link>
         <Link to="/profile" className={`${styles.link} ${location.pathname === '/profile' ? styles.active : ''}`}>
           <FaRegUser /> Profile
