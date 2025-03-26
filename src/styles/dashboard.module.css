@@ -34,8 +34,8 @@
   }
   
   .profileImage {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
   }
   
@@ -45,7 +45,7 @@
   }
   
   .greeting {
-    font-size: 2rem;
+    font-size: 1.6rem;
     margin-left: 15px;
     font-weight: 600;
   }
@@ -59,7 +59,7 @@
     background-color: #00AEEF;
     color: white;
     border: none;
-    padding: 20px 50px;
+    padding: 18px 40px;
     font-size: 25px;
     cursor: pointer;
     border-radius: 8px;
@@ -75,6 +75,117 @@
   .mobileNavbarWrapper {
     display: none;
   }
+
+  .allbutton {
+    border: none;
+    background: none;
+    font-size: 16px;
+    margin: 20px;
+    color: #6B6B6B;
+}
+
+
+.sentbutton {
+    border: none;
+    background: none;
+    font-size: 16px;
+    margin: 20px;
+    color: #9B96AB;
+}
+
+.receivedbutton {
+    border: none;
+    background: none;
+    font-size: 16px;
+    margin: 20px;
+    color: #9B96AB;
+}
+
+
+.cardscontainer {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.cardscontainer::-webkit-scrollbar {
+    scrollbar-color: black;
+    display: none;
+    width: 0px;
+    height: 0px;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    scrollbar-width: none;
+}
+
+.card1:hover, .card2:hover, .card3:hover, .card4:hover {
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 15px 40px -5px rgba(0, 0, 0, 0.25);
+}
+
+.cardtext {
+    margin: -60px 0 0 -40px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card {
+    margin: 0 10px 20px 20px;
+    height: 190px;
+    min-width: 320px;
+    background-image: url('src/assets/background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 320px;
+    border-radius: 40px / 80px;
+    color: white;
+    border: none;
+}
+
+.thisyear {
+    color: #9B96AB;
+}
+
+.cardsent {
+    display: flex;
+    flex-direction: row;
+}
+
+.nomandiccard1 {
+    margin: 20px;
+    width: 450px;
+    height: 130px;
+    border: solid #D2C2FFAD;
+    border-radius: 20px;
+}
+
+.nomandiccard1 h3, .nomandiccard2 h3 {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 25px;
+}
+
+.nomandiccard2 {
+    margin: 20px;
+    width: 450px;
+    height: 130px;
+    border: solid #D2C2FFAD;
+    border-radius: 20px;
+}
+
+.nomandiccarddiv {
+    width: 130;
+    height: 80;
+    background-image: url('src/assets/background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 300px;
+    border-radius: 40px / 80px;
+}
   
   @media (max-width: 768px) {
     .content {
@@ -123,7 +234,48 @@
         left: 50%;
         transform: translate(-50%, 0);
         bottom: 50%;
+        margin-bottom: 20px;
+        margin-top: -20px;
       }
-    }      
-  
+
+      .thisyear {
+        font-size: 18px;
+        margin-top: 70px;
+        margin-left: 10px;
+        color: #6B6B6B;
+    }
+
+    .cardsent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .nomandiccard1, .nomandiccard2 {
+        width: 90%;
+        margin-bottom: 15px;
+    }
+
+    .moreText {
+        color: #9B96AB;
+        font-size: 16px;
+        text-align: right;
+    }
+
+    .allbutton, .sentbutton, .receivedbutton {
+        font-size: 14px;
+        margin: 10px 0;
+    }
+
+    .allbutton,
+    .sentbutton,
+    .receivedbutton {
+        display: none;
+    }
+}      
   

@@ -13,7 +13,7 @@ const MobileNavbar = () => {
 
       <div className={styles.mobileNavbar}>
         <Link to="/dashboard" className={styles.navButton}><FaHome /></Link>
-        <Link to="/cards" className={styles.navButton}><FaRegCreditCard /></Link>
+        <Link to="/MyCards" className={styles.navButton}><FaRegCreditCard /></Link>
 
         <div className={styles.centralButtonWrapper}>
           <button className={styles.centralButton} onClick={() => setIsExpanded(!isExpanded)}>
