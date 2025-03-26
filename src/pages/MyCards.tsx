@@ -4,6 +4,7 @@ import styles from '../styles/MyCards.module.css';
 
 const MyCards: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'sent' | 'received'>('all');
+  const [searchQuery, setSearchQuery] = useState<string>(''); // Track search input
 
   // Sample cards data
   const cardsData = [
@@ -14,10 +15,17 @@ const MyCards: React.FC = () => {
     { id: 5, text: 'Bonus Card', category: 'received' }
   ];
 
-  // Filter cards based on active category
-  const filteredCards = cardsData.filter(card =>
-    filter === 'all' ? true : card.category === filter
-  );
+  // Filter cards based on active category and search query
+  const filteredCards = cardsData.filter(card => {
+    const matchesCategory = filter === 'all' ? true : card.category === filter;
+    const matchesSearch = card.text.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  // Handle search input change
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value); // Update the search query
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -29,7 +37,13 @@ const MyCards: React.FC = () => {
 
       {/* Search Bar */}
       <div className={styles.searchcontainer}>
-        <input className={styles.searchbar} type="text" placeholder="Search here..." />
+        <input
+          className={styles.searchbar}
+          type="text"
+          placeholder="Search here..."
+          value={searchQuery} // Bind the search input to state
+          onChange={handleSearchChange} // Update the search query
+        />
       </div>
 
       {/* Filter Buttons */}
@@ -62,9 +76,13 @@ const MyCards: React.FC = () => {
               <p className={styles.cardtext}>{card.text}</p>
             </button>
           ))}
-
         </div>
       </div>
+
+      <div>
+        
+      </div>
+
     </div>
   );
 };
