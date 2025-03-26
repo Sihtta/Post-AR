@@ -81,6 +81,7 @@
 .cardscontainer::-webkit-scrollbar {
     width: 0px; /* Hides scrollbar */
     height: 0px;
+    scroll-behavior: smooth;
 }
 
 .cards {
@@ -118,6 +119,7 @@
 }
 
 /* ========== "This Year" Section ========== */
+
 .thisyear {
     color: #9B96AB;
 }

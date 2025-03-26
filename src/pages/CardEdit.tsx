@@ -97,7 +97,7 @@ const CardEdit: React.FC = () => {
       </div>
       <div className={styles.cardButtons}>
         <button className={styles.cancelButton} onClick={handleDelete}>DELETE CARD</button>
-        <button className={styles.cancelButton} onClick={() => navigate("/")}>Cancel</button>
+        <button className={styles.cancelButton} onClick={() => navigate("/dashboard")}>Cancel</button>
         <button className={styles.submitButton} onClick={handleSubmit}>Save Changes</button>
       </div>
     </div>

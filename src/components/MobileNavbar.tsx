@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { FaHome, FaUser, FaPlus, FaTimes, FaImage, FaQrcode, FaSync, FaRegCreditCard, FaPlay } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { FaHome, FaUser, FaPlus, FaTimes, FaQrcode, FaSync, FaRegCreditCard } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import styles from '../styles/mobileNavbar.module.css';
+import { MdQrCode, MdCreditCard } from 'react-icons/md';
 
 const MobileNavbar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const location = useLocation();
 
   return (
     <>
@@ -13,7 +13,7 @@ const MobileNavbar = () => {
 
       <div className={styles.mobileNavbar}>
         <Link to="/dashboard" className={styles.navButton}><FaHome /></Link>
-        <Link to="/cards" className={styles.navButton}><FaRegCreditCard /></Link>
+        <Link to="/MyCards" className={styles.navButton}><MdCreditCard /></Link>
 
         <div className={styles.centralButtonWrapper}>
           <button className={styles.centralButton} onClick={() => setIsExpanded(!isExpanded)}>
@@ -21,16 +21,21 @@ const MobileNavbar = () => {
           </button>
           {isExpanded && (
             <div className={styles.expandedButtons}>
-              <button className={styles.expandedButton}><FaImage /></button>
-              <button className={styles.expandedButton}><FaQrcode /></button>
-              <button className={styles.expandedButton}><FaPlay /></button>
+              {}
+              <Link to="/cardAdd" className={styles.expandedButton}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 4c.55 0 1 .45 1 1v6h6c.55 0 1 .45 1 1s-.45 1-1 1h-6v6c0 .55-.45 1-1 1s-1-.45-1-1v-6H5c-.55 0-1-.45-1-1s.45-1 1-1h6V5c0-.55.45-1 1-1z"/>
+                </svg>
+              </Link>
+              {}
+              <button className={styles.expandedButton} style={{ color: '#6a5acd' }}><MdQrCode /></button>
             </div>
           )}
         </div>
 
         <button className={styles.navButton} onClick={() => window.location.reload()}>
-            <FaSync />
-        </button>
+  <FaSync />
+</button>
         <Link to="/profile" className={styles.navButton}><FaUser /></Link>
       </div>
     </>

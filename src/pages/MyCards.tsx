@@ -62,6 +62,7 @@ const MyCards: React.FC = () => {
               <p className={styles.cardtext}>{card.text}</p>
             </button>
           ))}
+
         </div>
       </div>
     </div>
