@@ -10,7 +10,6 @@ import MyCards from './pages/MyCards';
 import Layout from './components/Layout';
 import Dashboard from "./pages/Dashboard"
 
-
 const App: React.FC = () => {
   return (
     <Router>
