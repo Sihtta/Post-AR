@@ -99,7 +99,7 @@ const CardAdd: React.FC = () => {
               <input type="file" accept="video/*" onChange={handleFileChange} style={{ display: "none" }} />
             </label>
           </div>
-          <button type="button" className={styles.cancelButton} onClick={() => navigate("/")}>
+          <button type="button" className={styles.cancelButton} onClick={() => navigate("/dashboard")}>
             Cancel
           </button>
         </div>
