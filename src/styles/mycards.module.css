@@ -1,15 +1,22 @@
+/* ========== General Layout ========== */
 .wrapper {
     background-color: white;
-    background-image: none;
     width: 100vw;
     min-height: 100vh;
     padding-left: 30px;
 }
 
 .header {
-    margin: 50px 0 20px 0;
+    margin: 50px 0 20px;
     padding-top: 70px;
     font-size: 300%;
+}
+
+/* ========== Search Bar ========== */
+.searchcontainer {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .searchbar {
@@ -21,54 +28,58 @@
     padding: 20px;
     border-radius: 5px;
     font-size: 16px;
+
+    /* Search icon inside input */
     background-image: url('src/assets/search-icon.png');
     background-position: right 10px center;
     background-repeat: no-repeat;
     background-size: 40px;
-    padding-right: 35px;
+    padding-right: 35px; /* Space for the icon */
 }
 
-.searchcontainer {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-
-.allbutton {
-    border: none;
-    background: none;
-    font-size: 16px;
-    margin: 20px;
-    color: #6B6B6B;
-}
-
-.sentbutton {
-    border: none;
-    background: none;
-    font-size: 16px;
-    margin: 20px;
-    color: #9B96AB;
-}
-
+/* ========== Filter Buttons (All, Sent, Received) ========== */
+.allbutton,
+.sentbutton,
 .receivedbutton {
-    border: none;
-    background: none;
-    font-size: 16px;
-    margin: 20px;
-    color: #9B96AB;
+  border: none;
+  background: none;
+  font-size: 16px;
+  margin: 0 10px 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  color: #6b6b6b; /* Default color */
+  border-radius: 20px;
 }
 
+/* Hover effect */
+.allbutton:hover,
+.sentbutton:hover,
+.receivedbutton:hover {
+  background-color: #646cff;
+  transform: translateY(-4px);
+  color: white;
+}
+
+/* Active button styles */
+.active {
+  background-color: #646cff; /* Darker color when active */
+  color: white;
+}
+
+/* ========== Cards Section ========== */
 .cardscontainer {
-    overflow-x: auto;
+    overflow-x: auto; /* Allows horizontal scrolling */
     white-space: nowrap;
     width: 100%;
+    
+    /* Hides scrollbar but keeps scrolling */
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 .cardscontainer::-webkit-scrollbar {
-    scrollbar-color: black;
-    display: none;
-    width: 0px;
+    width: 0px; /* Hides scrollbar */
     height: 0px;
 }
 
@@ -76,35 +87,37 @@
     display: flex;
     flex-direction: row;
     white-space: nowrap;
-    scrollbar-width: none;
 }
 
-.card1:hover, .card2:hover, .card3:hover, .card4:hover {
+/* Individual Card */
+.card {
+    margin: 0 10px 20px 20px;
+    height: 190px;
+    min-width: 320px;
+    background-image: url('src/assets/BlueCardExample.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 350px;
+    border-radius: 40px / 80px;
+    color: white;
+    border: none;
+}
+
+/* Card hover effect */
+.card:hover {
     transition: 0.3s ease-in-out;
-    box-shadow: 0px 15px 40px -5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 40px -15px rgba(119, 126, 254, 1);
+    cursor: pointer;
 }
 
+/* Card Text */
 .cardtext {
     margin: -60px 0 0 -40px;
     font-size: 20px;
     font-weight: bold;
 }
 
-.card {
-    margin: 0 10px 20px 20px;
-    height: 190px;
-    min-width: 320px;
-    background-image: url('src/assets/background.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 320px;
-    border-radius: 40px / 80px;
-    color: white;
-    border: none;
-}
-
-
-
+/* ========== "This Year" Section ========== */
 .thisyear {
     color: #9B96AB;
 }
@@ -114,7 +127,8 @@
     flex-direction: row;
 }
 
-.nomandiccard1 {
+/* ========== Nomadic Cards ========== */
+.nomandiccard1, .nomandiccard2 {
     margin: 20px;
     width: 450px;
     height: 130px;
@@ -128,17 +142,10 @@
     font-size: 25px;
 }
 
-.nomandiccard2 {
-    margin: 20px;
-    width: 450px;
-    height: 130px;
-    border: solid #D2C2FFAD;
-    border-radius: 20px;
-}
-
+/* Background for Nomadic Card */
 .nomandiccarddiv {
-    width: 130;
-    height: 80;
+    width: 130px;
+    height: 80px;
     background-image: url('src/assets/background.png');
     background-position: center;
     background-repeat: no-repeat;

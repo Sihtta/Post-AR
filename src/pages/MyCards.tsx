@@ -1,52 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import styles from '../styles/MyCards.module.css'
+import styles from '../styles/MyCards.module.css';
 
 const MyCards: React.FC = () => {
-    return (
-        <div className={styles.wrapper}>
+  const [filter, setFilter] = useState<'all' | 'sent' | 'received'>('all');
+
+  // Sample cards data
+  const cardsData = [
+    { id: 1, text: 'Main Balance', category: 'all' },
+    { id: 2, text: 'Sunshine Memory', category: 'sent' },
+    { id: 3, text: 'Gift Card', category: 'received' },
+    { id: 4, text: 'Travel Card', category: 'sent' },
+    { id: 5, text: 'Bonus Card', category: 'received' }
+  ];
+
+  // Filter cards based on active category
+  const filteredCards = cardsData.filter(card =>
+    filter === 'all' ? true : card.category === filter
+  );
+
+  return (
+    <div className={styles.wrapper}>
       {/* Navbar */}
-      <div>
-        <Navbar/>
-      </div>
+      <Navbar />
 
-      <div>
-        <h1 className={styles.header}>My Cards</h1>
-      </div>
+      {/* Header */}
+      <h1 className={styles.header}>My Cards</h1>
 
+      {/* Search Bar */}
       <div className={styles.searchcontainer}>
         <input className={styles.searchbar} type="text" placeholder="Search here..." />
       </div>
 
-      <div>
-        <button className={styles.allbutton}>All</button>
-        <button className={styles.sentbutton}>Sent</button>
-        <button className={styles.receivedbutton}>Received</button>
+      {/* Filter Buttons */}
+      <div className={styles.buttonContainer}>
+        <button
+          className={`${styles.allbutton} ${filter === 'all' ? styles.active : ''}`}
+          onClick={() => setFilter('all')}
+        >
+          All
+        </button>
+        <button
+          className={`${styles.sentbutton} ${filter === 'sent' ? styles.active : ''}`}
+          onClick={() => setFilter('sent')}
+        >
+          Sent
+        </button>
+        <button
+          className={`${styles.receivedbutton} ${filter === 'received' ? styles.active : ''}`}
+          onClick={() => setFilter('received')}
+        >
+          Received
+        </button>
       </div>
 
+      {/* Cards Section */}
       <div className={styles.cardscontainer}>
         <div className={styles.cards}>
-            <button className={styles.card}><p className={styles.cardtext}>Main Balance</p></button>
-            <button className={styles.card}><p className={styles.cardtext}>Sunshine Memory</p></button>
-            <button className={styles.card}><p className={styles.cardtext}>Card</p></button>
-            <button className={styles.card}><p className={styles.cardtext}>Card</p></button>
-            <button className={styles.card}><p className={styles.cardtext}>Card</p></button>
-        </div>
-      </div>
-
-      <div>
-        <h2 className={styles.thisyear}>This Year</h2>
-        <div className={styles.cardsent}>
-          <div className={styles.nomandiccard1}>
-            <div className={styles.nomandiccarddiv}></div>
-            <h3>Nomadic Card</h3>
-            <p>A stunning mountain view from an unforgettable trip.</p>
-          </div>
-          <div className={styles.nomandiccard2}>
-            <div className={styles.nomandiccarddiv}></div>
-            <h3>Nomadic Card 2</h3>
-            <p>A stunning mountain view from an unforgettable trip.</p>
-          </div>
+          {filteredCards.map(card => (
+            <button key={card.id} className={styles.card}>
+              <p className={styles.cardtext}>{card.text}</p>
+            </button>
+          ))}
         </div>
       </div>
     </div>
