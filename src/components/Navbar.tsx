@@ -20,7 +20,7 @@ const Navbar = () => {
       <Link to="/" className={styles.logo}>Post AR</Link>
       <div className={styles.links}>
         <Link to="/dashboard" className={`${styles.link} ${location.pathname === '/dashboard' ? styles.active : ''}`}>
-          <MdDashboard /> Dashboard
+          <MdDashboard /> Home
         </Link>
         <Link to="/MyCards" className={`${styles.link} ${location.pathname === '/MyCards' ? styles.active : ''}`}>
           <MdCreditCard /> Cards
