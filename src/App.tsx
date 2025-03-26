@@ -9,6 +9,7 @@ import ProfilePage from './pages/ProfilePage';
 import MyCards from './pages/MyCards';
 import Layout from './components/Layout';
 import Dashboard from "./pages/Dashboard"
+import VerifyEmail from "./pages/VerifyEmail"
 
 const App: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
           <Route path="/cardAdd" element={<CardAdd />} />
           <Route path="/cardEdit" element={<CardEdit />} />
           <Route path="/MyCards" element={<MyCards />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
         </Route>
       </Routes>
     </Router>
