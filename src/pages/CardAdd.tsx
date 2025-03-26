@@ -1,29 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import styles from "../styles/cardAdd.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faVideo } from "@fortawesome/free-solid-svg-icons";
 
-
-// im adding a bit of commentairy so its easier to see what does what.
-// i have almost no experience with backend and databases so change what you need to change
-// chatgpt has been used for parts of the backend of this page
-
-
 const CardAdd: React.FC = () => {
-  const [media, setMedia] = useState<File | null>(null); // stores the uploaded file
-  const [preview, setPreview] = useState<string | null>(null); // stores preview URL
-  const [isVideo, setIsVideo] = useState<boolean>(false); // checks if its a vid
+  const [media, setMedia] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [isVideo, setIsVideo] = useState<boolean>(false);
   const [formData, setFormData] = useState({
     title: "",
     date: "",
     message: "",
   });
 
-    // stores the file in media
-    // generates a preview url with the URL.createObjectURL()
-    
+  // Reset form data when the page loads
+  useEffect(() => {
+    setFormData({ title: "", date: "", message: "" });
+    setMedia(null);
+    setPreview(null);
+    setIsVideo(false);
+  }, []);
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
@@ -31,36 +30,29 @@ const CardAdd: React.FC = () => {
 
       setMedia(file);
       setPreview(fileURL);
-      setIsVideo(file.type.startsWith("video")); // checks if the file is a video
+      setIsVideo(file.type.startsWith("video"));
     }
   };
-  
-  // updates the formData state whenever there is a input being given
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-
-    
   const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault(); // prevents the page from reloading and deleting all the input data
+    event.preventDefault();
 
     if (!formData.title || !formData.date || !formData.message || !media) {
-      alert("Please fill out all fields and upload a file."); // <-- gives this message if not everything is filled
+      alert("Please fill out all fields and upload a file.");
       return;
     }
-      //creates a FormData object for backend
+
     const formDataToSend = new FormData();
     formDataToSend.append("title", formData.title);
     formDataToSend.append("date", formData.date);
     formDataToSend.append("message", formData.message);
     formDataToSend.append("media", media);
 
-    try {//                               v sends the request here v
+    try {
       const response = await axios.post("http://localhost:5000/upload", formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
@@ -89,7 +81,7 @@ const CardAdd: React.FC = () => {
             )
           ) : (
             <img
-              src="src/assets/BlueCardExample.png"
+              src="src/assets/walletCard3.png"
               className={styles.exampleImage}
               alt="Card Example"
             />
