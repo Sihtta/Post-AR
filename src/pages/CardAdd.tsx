@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import styles from "../styles/cardAdd.module.css";
@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faVideo } from "@fortawesome/free-solid-svg-icons";
 
 const CardAdd: React.FC = () => {
-  const navigate = useNavigate(); // ✅ Initialize navigate
+  const navigate = useNavigate();
 
   const [media, setMedia] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
@@ -61,6 +61,9 @@ const CardAdd: React.FC = () => {
 
       alert("Upload successful!");
       console.log(response.data);
+
+      navigate("/dashboard");
+
     } catch (error) {
       console.error("Error uploading:", error);
       alert("Upload failed.");
@@ -99,7 +102,7 @@ const CardAdd: React.FC = () => {
               <input type="file" accept="video/*" onChange={handleFileChange} style={{ display: "none" }} />
             </label>
           </div>
-          <button type="button" className={styles.cancelButton} onClick={() => navigate("/")}>
+          <button type="button" className={styles.cancelButton} onClick={() => navigate("/dashboard")}>
             Cancel
           </button>
         </div>
@@ -110,7 +113,9 @@ const CardAdd: React.FC = () => {
           <input type="date" name="date" className={styles.dateField} value={formData.date} onChange={handleInputChange} />
           <h2>Message</h2>
           <input type="text" name="message" className={styles.inputField} value={formData.message} onChange={handleInputChange} />
-          <button type="submit" className={styles.submitButton}>Submit</button>
+          <button type="submit" className={styles.submitButton}>
+            Submit
+          </button>
         </div>
       </form>
     </div>
