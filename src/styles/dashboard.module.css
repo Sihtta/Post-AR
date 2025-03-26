@@ -254,3 +254,38 @@
     border: none;
   }
 }
+
+/* Carte ID 1 */
+.mainBalanceCard {
+  background-image: url('/src/assets/BlueCardExample.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Carte ID 2 (Sunshine Memory) */
+.sunshineCard {
+  background-image: url('/src/assets/GreenCardExample.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Carte ID 3 (Gift Card) */
+.giftCard {
+  background-image: url('/src/assets/PurpleCardExample.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Carte ID 4 (Travel Card) */
+.travelCard {
+  background-image: url('/src/assets/YellowCardExample.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Carte ID 5 (Bonus Card) */
+.bonusCard {
+  background-image: url('/src/assets/RedCardExample.png');
+  background-size: cover;
+  background-position: center;
+}

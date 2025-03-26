@@ -35,9 +35,16 @@ const Dashboard: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // Handle search input change
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value); // Update the search query
+  // Fonction pour assigner une classe spécifique selon l'ID de la carte
+  const getCardClass = (id: number) => {
+    switch (id) {
+      case 1: return styles.mainBalanceCard;
+      case 2: return styles.sunshineCard;
+      case 3: return styles.giftCard;
+      case 4: return styles.travelCard;
+      case 5: return styles.bonusCard;
+      default: return '';
+    }
   };
 
   return (
@@ -63,7 +70,7 @@ const Dashboard: React.FC = () => {
             type="text"
             placeholder="Search here..."
             value={searchQuery} // Bind the search input to state
-            onChange={handleSearchChange} // Update the search query
+            onChange={(e) => setSearchQuery(e.target.value)} // Update the search query
           />
         </div>
 
@@ -93,7 +100,7 @@ const Dashboard: React.FC = () => {
         <div className={styles.cardscontainer}>
           <div className={styles.cards}>
             {filteredCards.map(card => (
-              <button key={card.id} className={styles.card}>
+              <button key={card.id} className={`${styles.card} ${getCardClass(card.id)}`}>
                 <p className={styles.cardtext}>{card.text}</p>
               </button>
             ))}

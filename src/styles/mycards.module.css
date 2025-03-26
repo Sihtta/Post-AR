@@ -181,8 +181,6 @@
     }
 }
 
-/* ========== Styles spécifiques pour chaque carte ========== */
-
 /* Carte ID 1 */
 .mainBalanceCard {
     background-image: url('/src/assets/BlueCardExample.png');
