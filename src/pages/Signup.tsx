@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../components/Input';
-import styles from '../auth.module.css';
+import styles from '../styles/auth.module.css';
 import googleIcon from '../assets/google.png';
 import appleIcon from '../assets/apple.png';
 
 const Signup: React.FC = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.body.classList.add('auth-page');
+    return () => {
+      document.body.classList.remove('auth-page'); 
+    };
+  }, []);
+
   return (
     <div className={styles['auth-container']}>
       <div className={styles['login-box']}>
         <h1 className={styles['title']}>Sign up</h1>
+        <Input type="username" placeholder="Username" />
         <Input type="email" placeholder="Email" />
         <Input type="password" placeholder="Password" />
         <Input type="password" placeholder="Confirm Password" />
