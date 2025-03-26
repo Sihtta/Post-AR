@@ -52,7 +52,7 @@ const CardEdit: React.FC = () => {
     try {
       await axios.put(`http://localhost:5000/cards/${id}`, card);
       alert("Card updated successfully!");
-      navigate("/"); // redirect to homepage
+      navigate("/");
     } catch (error) {
       console.error("Update failed:", error);
     }
@@ -99,7 +99,6 @@ const CardEdit: React.FC = () => {
         <button className={styles.cancelButton} onClick={handleDelete}>DELETE CARD</button>
         <button className={styles.cancelButton} onClick={() => navigate("/")}>Cancel</button>
         <button className={styles.submitButton} onClick={handleSubmit}>Save Changes</button>
-        <button className={styles.resetButton} onClick={handleReset}>Reset Form</button> {/* Reset Button */}
       </div>
     </div>
   );
