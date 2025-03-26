@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaHome, FaUser, FaPlus, FaTimes, FaImage, FaQrcode, FaSync, FaRegCreditCard, FaPlay } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from '../styles/mobileNavbar.module.css';
 
-const MobileNavbar: React.FC = () => {
+const MobileNavbar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const location = useLocation();
 
   return (
     <>
       {isExpanded && <div className={styles.overlay} onClick={() => setIsExpanded(false)}></div>}
 
       <div className={styles.mobileNavbar}>
-        <button className={styles.navButton}><FaHome /></button>
-        <button className={styles.navButton}><FaRegCreditCard /></button>
+        <Link to="/dashboard" className={styles.navButton}><FaHome /></Link>
+        <Link to="/cards" className={styles.navButton}><FaRegCreditCard /></Link>
 
         <div className={styles.centralButtonWrapper}>
           <button className={styles.centralButton} onClick={() => setIsExpanded(!isExpanded)}>
@@ -22,7 +23,7 @@ const MobileNavbar: React.FC = () => {
             <div className={styles.expandedButtons}>
               <button className={styles.expandedButton}><FaImage /></button>
               <button className={styles.expandedButton}><FaQrcode /></button>
-              <button className={styles.expandedButton}><FaPlay /></button> {/* Nouveau bouton Play */}
+              <button className={styles.expandedButton}><FaPlay /></button>
             </div>
           )}
         </div>

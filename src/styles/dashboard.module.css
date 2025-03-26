@@ -16,10 +16,12 @@
   
   .content {
     display: flex;
+    flex-direction: row; 
     align-items: center;
     justify-content: flex-start;
     padding: 40px;
-    flex-grow: 1;
+    margin-top: 50px; 
+    gap: 20px;
   }
   
   .profileSection {
@@ -75,18 +77,53 @@
   }
   
   @media (max-width: 768px) {
-    .mobileNavbarWrapper {
-      display: block;
-    }
-  
     .content {
-      justify-content: center;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: flex-start;
       padding: 20px;
+      width: 100%;
     }
   
-    .profileSection {
-      width: 100%;
+    .textContainer {
+      display: flex;
+      flex-direction: column;
       justify-content: center;
+      text-align: left;
     }
-  }
+  
+    .greeting {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 2px;
+    }
+  
+    .userName {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  
+    .profileImage {
+      width: 50px;
+      height: 50px;
+      border-radius: 20%;
+      object-fit: cover;
+    }
+  
+    .addButton {
+        padding: 10px 26px;
+        font-size: 16px;
+        border-radius: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        bottom: 50%;
+      }
+    }      
+  
   

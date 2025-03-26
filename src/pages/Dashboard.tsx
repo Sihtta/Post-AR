@@ -23,7 +23,7 @@ const Dashboard: React.FC = () => {
       <div className={styles.content}>
         <img src={user?.avatar} alt="Profile" className={styles.profileImage} />
         <div className={styles.textContainer}>
-          <h1 className={styles.greeting}>Hello, <br></br> <span className={styles.userName}>{user ? user.name : "User"}</span></h1>
+          <h1 className={styles.greeting}>Hello <br></br> <span className={styles.userName}>{user ? user.name : "User"}</span></h1>
           <button onClick={() => navigate("/cardAdd")} className={styles.addButton}>
             Add Card
           </button>
