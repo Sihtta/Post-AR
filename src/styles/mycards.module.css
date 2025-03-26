@@ -93,12 +93,12 @@
 /* Individual Card */
 .card {
     margin: 0 10px 20px 20px;
-    height: 190px;
-    min-width: 320px;
+    height: 300px;
+    min-width: 475px;
     background-image: url('src/assets/BlueCardExample.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 350px;
+    background-size: 600px;
     border-radius: 40px / 80px;
     color: white;
     border: none;
@@ -113,7 +113,7 @@
 
 /* Card Text */
 .cardtext {
-    margin: -60px 0 0 -40px;
+    margin: -100px 0 0 -100px;
     font-size: 20px;
     font-weight: bold;
 }
