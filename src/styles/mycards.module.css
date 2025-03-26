@@ -70,6 +70,7 @@
     display: none;
     width: 0px;
     height: 0px;
+    scroll-behavior: smooth;
 }
 
 .cards {
@@ -94,7 +95,7 @@
     margin: 0 10px 20px 20px;
     height: 190px;
     min-width: 320px;
-    background-image: url('src/assets/background.png');
+    background-image: url('src/assets/walletCard3.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 320px;

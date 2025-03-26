@@ -31,6 +31,11 @@ const MyCards: React.FC = () => {
             <button className={styles.card}><p className={styles.cardtext}>Card</p></button>
             <button className={styles.card}><p className={styles.cardtext}>Card</p></button>
             <button className={styles.card}><p className={styles.cardtext}>Card</p></button>
+            <button className={styles.card}><p className={styles.cardtext}>Card</p></button>
+            <button className={styles.card}><p className={styles.cardtext}>Card</p></button>
+            <button className={styles.card}><p className={styles.cardtext}>Card</p></button>
+            <button className={styles.card}><p className={styles.cardtext}>Card</p></button>
+            <button className={styles.card}><p className={styles.cardtext}>Card</p></button>
         </div>
       </div>
 
