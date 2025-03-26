@@ -52,7 +52,7 @@ const CardEdit: React.FC = () => {
     try {
       await axios.put(`http://localhost:5000/cards/${id}`, card);
       alert("Card updated successfully!");
-      navigate("/");
+      navigate("/"); // redirect to homepage
     } catch (error) {
       console.error("Update failed:", error);
     }
