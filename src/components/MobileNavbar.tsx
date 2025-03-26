@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaHome, FaUser, FaPlus, FaTimes, FaQrcode, FaSync, FaRegCreditCard } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import styles from '../styles/mobileNavbar.module.css';
+import { MdQrCode, MdCreditCard } from 'react-icons/md';
 
 const MobileNavbar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -12,7 +13,7 @@ const MobileNavbar = () => {
 
       <div className={styles.mobileNavbar}>
         <Link to="/dashboard" className={styles.navButton}><FaHome /></Link>
-        <Link to="/cards" className={styles.navButton}><FaRegCreditCard /></Link>
+        <Link to="/cards" className={styles.navButton}><MdCreditCard /></Link>
 
         <div className={styles.centralButtonWrapper}>
           <button className={styles.centralButton} onClick={() => setIsExpanded(!isExpanded)}>
@@ -27,7 +28,7 @@ const MobileNavbar = () => {
                 </svg>
               </Link>
               {}
-              <button className={styles.expandedButton}><FaQrcode /></button>
+              <button className={styles.expandedButton} style={{ color: '#6a5acd' }}><MdQrCode /></button>
             </div>
           )}
         </div>
