@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import styles from "../styles/cardAdd.module.css";
@@ -6,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faVideo } from "@fortawesome/free-solid-svg-icons";
 
 const CardAdd: React.FC = () => {
+  const navigate = useNavigate(); // ✅ Initialize navigate
+
   const [media, setMedia] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [isVideo, setIsVideo] = useState<boolean>(false);
@@ -15,7 +18,6 @@ const CardAdd: React.FC = () => {
     message: "",
   });
 
-  // Reset form data when the page loads
   useEffect(() => {
     setFormData({ title: "", date: "", message: "" });
     setMedia(null);
@@ -97,7 +99,7 @@ const CardAdd: React.FC = () => {
               <input type="file" accept="video/*" onChange={handleFileChange} style={{ display: "none" }} />
             </label>
           </div>
-          <button type="button" className={styles.cancelButton} onClick={() => setPreview(null)}>
+          <button type="button" className={styles.cancelButton} onClick={() => navigate("/")}>
             Cancel
           </button>
         </div>
