@@ -53,7 +53,7 @@ const CardEdit: React.FC = () => {
 
   // asks for confirmation before deleting (window.confirm)
   // sends a DELETE request to /cards/:id
-  // if successful, alerts the user and redirects to /
+  // if successful, alerts the user and redirects to / (Home page)
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this card?")) {
       try {
