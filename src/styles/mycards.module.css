@@ -154,3 +154,21 @@
     background-size: 300px;
     border-radius: 40px / 80px;
 }
+
+@media (max-width: 768px) {
+    .header {
+        display: flex;
+        justify-content: center;
+    }
+
+    .searchcontainer {
+        justify-content: center;
+    }
+
+    .buttonContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+}
