@@ -13,7 +13,8 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: white;
-    justify-content: start;
+    justify-content: space-between;
+    padding-bottom: 100px;
 }
 
 .cardContainer {
