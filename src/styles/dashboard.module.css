@@ -216,10 +216,9 @@
   }
 
   .addButton {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
     margin: 0;
+    padding: 8px 18px;
+    font-size: 16px;
   }
 
   .searchcontainer {
@@ -232,7 +231,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    gap: 0px; 
     width: 100%;
   }
 
@@ -244,6 +242,26 @@
     border-radius: 40px / 80px;
     color: white;
     border: none;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobileOnly {
+    display: none;
+  }
+
+  .desktopOnly {
+    display: block;
   }
 }
 

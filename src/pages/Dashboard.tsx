@@ -8,7 +8,7 @@ import profilePic from "../assets/profile.png";
 const Dashboard: React.FC = () => {
   const [user, setUser] = useState<{ name: string; avatar: string } | null>(null);
   const [filter, setFilter] = useState<'all' | 'sent' | 'received'>('all');
-  const [searchQuery, setSearchQuery] = useState<string>(''); // Track search input
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,7 +19,6 @@ const Dashboard: React.FC = () => {
     fetchUser();
   }, []);
 
-  // Sample cards data
   const cardsData = [
     { id: 1, text: 'Main Balance', category: 'all' },
     { id: 2, text: 'Sunshine Memory', category: 'sent' },
@@ -28,14 +27,12 @@ const Dashboard: React.FC = () => {
     { id: 5, text: 'Bonus Card', category: 'received' }
   ];
 
-  // Filter cards based on active category and search query
   const filteredCards = cardsData.filter(card => {
     const matchesCategory = filter === 'all' ? true : card.category === filter;
     const matchesSearch = card.text.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
-  // Fonction pour assigner une classe spécifique selon l'ID de la carte
   const getCardClass = (id: number) => {
     switch (id) {
       case 1: return styles.mainBalanceCard;
@@ -54,8 +51,12 @@ const Dashboard: React.FC = () => {
       <div className={styles.content}>
         <img src={user?.avatar} alt="Profile" className={styles.profileImage} />
         <div className={styles.textContainer}>
-          <h1 className={styles.greeting}>Hello <br /> <span className={styles.userName}>{user ? user.name : "User"}</span></h1>
-          <button onClick={() => navigate("/cardAdd")} className={styles.addButton}>
+          <h1 className={styles.greeting}>
+            Hello <br />
+            <span className={styles.userName}>{user ? user.name : "User"}</span>
+          </h1>
+          {/* Bouton Add Card en desktop */}
+          <button onClick={() => navigate("/cardAdd")} className={`${styles.addButton} ${styles.desktopOnly}`}>
             Add Card
           </button>
         </div>
@@ -63,40 +64,36 @@ const Dashboard: React.FC = () => {
 
       {/* Section My Cards */}
       <div className={styles.myCardsSection}>
-        {/* Search Bar */}
+        {/* Barre de recherche */}
         <div className={styles.searchcontainer}>
           <input
             className={styles.searchbar}
             type="text"
             placeholder="Search here..."
-            value={searchQuery} // Bind the search input to state
-            onChange={(e) => setSearchQuery(e.target.value)} // Update the search query
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
 
-        {/* Filter Buttons */}
+        {/* Bouton Add Card en mobile */}
+        <button onClick={() => navigate("/cardAdd")} className={`${styles.addButton} ${styles.mobileOnly}`}>
+          Add Card
+        </button>
+
+        {/* Filtres */}
         <div className={styles.buttonContainer}>
-          <button
-            className={`${styles.allbutton} ${filter === 'all' ? styles.active : ''}`}
-            onClick={() => setFilter('all')}
-          >
+          <button className={`${styles.allbutton} ${filter === 'all' ? styles.active : ''}`} onClick={() => setFilter('all')}>
             All
           </button>
-          <button
-            className={`${styles.sentbutton} ${filter === 'sent' ? styles.active : ''}`}
-            onClick={() => setFilter('sent')}
-          >
+          <button className={`${styles.sentbutton} ${filter === 'sent' ? styles.active : ''}`} onClick={() => setFilter('sent')}>
             Sent
           </button>
-          <button
-            className={`${styles.receivedbutton} ${filter === 'received' ? styles.active : ''}`}
-            onClick={() => setFilter('received')}
-          >
+          <button className={`${styles.receivedbutton} ${filter === 'received' ? styles.active : ''}`} onClick={() => setFilter('received')}>
             Received
           </button>
         </div>
 
-        {/* Cards Section */}
+        {/* Cartes */}
         <div className={styles.cardscontainer}>
           <div className={styles.cards}>
             {filteredCards.map(card => (
