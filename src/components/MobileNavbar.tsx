@@ -33,7 +33,9 @@ const MobileNavbar = () => {
           )}
         </div>
 
-        <button className={styles.navButton}><FaSync /></button>
+        <button className={styles.navButton} onClick={() => window.location.reload()}>
+  <FaSync />
+</button>
         <Link to="/profile" className={styles.navButton}><FaUser /></Link>
       </div>
     </>
