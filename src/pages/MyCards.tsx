@@ -58,7 +58,7 @@ const MyCards: React.FC = () => {
       <div className={styles.cardscontainer}>
         <div className={styles.cards}>
           {filteredCards.map(card => (
-            <button key={card.id} className={styles.card}>
+            <button key={card.id} className={styles.card} >
               <p className={styles.cardtext}>{card.text}</p>
             </button>
           ))}
