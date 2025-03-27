@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import MobileNavbar from "../components/MobileNavbar";
@@ -10,6 +10,7 @@ const Dashboard: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'sent' | 'received'>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const navigate = useNavigate();
+  const cardRefs = useRef<{ [key: number]: HTMLButtonElement | null }>({});
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -44,6 +45,12 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  const getComputedBgColor = (id: number) => {
+    const cardElement = cardRefs.current[id];
+    if (!cardElement) return 'rgba(0,0,0,0.3)';
+    return window.getComputedStyle(cardElement).backgroundColor;
+  };
+
   return (
     <div className={styles.dashboardWrapper}>
       <Navbar />
@@ -55,16 +62,13 @@ const Dashboard: React.FC = () => {
             Hello <br />
             <span className={styles.userName}>{user ? user.name : "User"}</span>
           </h1>
-          {/* Bouton Add Card en desktop */}
           <button onClick={() => navigate("/cardAdd")} className={`${styles.addButton} ${styles.desktopOnly}`}>
             Add Card
           </button>
         </div>
       </div>
 
-      {/* Section My Cards */}
       <div className={styles.myCardsSection}>
-        {/* Barre de recherche */}
         <div className={styles.searchcontainer}>
           <input
             className={styles.searchbar}
@@ -75,12 +79,10 @@ const Dashboard: React.FC = () => {
           />
         </div>
 
-        {/* Bouton Add Card en mobile */}
         <button onClick={() => navigate("/cardAdd")} className={`${styles.addButton} ${styles.mobileOnly}`}>
           Add Card
         </button>
 
-        {/* Filtres */}
         <div className={styles.buttonContainer}>
           <button className={`${styles.allbutton} ${filter === 'all' ? styles.active : ''}`} onClick={() => setFilter('all')}>
             All
@@ -93,18 +95,24 @@ const Dashboard: React.FC = () => {
           </button>
         </div>
 
-        {/* Cartes */}
         <div className={styles.cardscontainer}>
           <div className={styles.cards}>
-          {filteredCards.map(card => (
-            <button
-              key={card.id}
-              className={`${styles.card} ${getCardClass(card.id)}`}
-              onClick={() => navigate(`/CardEdit`)}
-            >
-              <p className={styles.cardtext}>{card.text}</p>
-            </button>
-          ))}
+            {filteredCards.map(card => (
+              <button
+                key={card.id}
+                ref={(el) => {
+                  if (el) {
+                    cardRefs.current[card.id] = el;
+                  }
+                }}
+                className={`${styles.card} ${getCardClass(card.id)}`}
+                onMouseEnter={(e) => (e.currentTarget.style.boxShadow = `0px 0px 15px ${getComputedBgColor(card.id)}`)}
+                onMouseLeave={(e) => (e.currentTarget.style.boxShadow = `none`)}
+                onClick={() => navigate(`/CardEdit`)}
+              >
+                <p className={styles.cardtext}>{card.text}</p>
+              </button>
+            ))}
           </div>
         </div>
       </div>
