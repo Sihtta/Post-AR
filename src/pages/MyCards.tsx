@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import styles from '../styles/MyCards.module.css';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const MyCards: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'sent' | 'received'>('all');
   const [searchQuery, setSearchQuery] = useState<string>(''); // Track search input
+  const navigate = useNavigate();
 
   // Sample cards data
   const cardsData = [
@@ -72,7 +74,7 @@ const MyCards: React.FC = () => {
       <div className={styles.cardscontainer}>
         <div className={styles.cards}>
           {filteredCards.map(card => (
-            <button key={card.id} className={styles.card} >
+            <button key={card.id} className={styles.card} onClick={() => navigate("/CardEdit")} >
               <p className={styles.cardtext}>{card.text}</p>
             </button>
           ))}
