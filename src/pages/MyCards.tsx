@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import styles from '../styles/MyCards.module.css';
 
 const MyCards: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'sent' | 'received'>('all');
-  const [searchQuery, setSearchQuery] = useState<string>(''); // Track search input
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const cardRefs = useRef<{ [key: number]: HTMLButtonElement | null }>({});
 
-  // Sample cards data
   const cardsData = [
     { id: 1, text: 'Main Balance', category: 'all' },
     { id: 2, text: 'Sunshine Memory', category: 'sent' },
@@ -15,14 +15,7 @@ const MyCards: React.FC = () => {
     { id: 5, text: 'Bonus Card', category: 'received' }
   ];
 
-  // Filter cards based on active category and search query
-  const filteredCards = cardsData.filter(card => {
-    const matchesCategory = filter === 'all' ? true : card.category === filter;
-    const matchesSearch = card.text.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  // Fonction pour assigner une classe spécifique selon l'ID de la carte
+  // Function to assign class
   const getCardClass = (id: number) => {
     switch (id) {
       case 1: return styles.mainBalanceCard;
@@ -34,12 +27,16 @@ const MyCards: React.FC = () => {
     }
   };
 
+  // Function to get the computed background color of a card
+  const getComputedBgColor = (id: number) => {
+    const cardElement = cardRefs.current[id];
+    if (!cardElement) return 'rgba(0,0,0,0.3)'; // Default shadow if no element
+    return window.getComputedStyle(cardElement).backgroundColor;
+  };
+
   return (
     <div className={styles.wrapper}>
-      {/* Navbar */}
       <Navbar />
-
-      {/* Header */}
       <h1 className={styles.header}>My Cards</h1>
 
       {/* Search Bar */}
@@ -48,8 +45,8 @@ const MyCards: React.FC = () => {
           className={styles.searchbar}
           type="text"
           placeholder="Search here..."
-          value={searchQuery} // Bind the search input to state
-          onChange={(e) => setSearchQuery(e.target.value)} // Update the search query
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
@@ -78,14 +75,24 @@ const MyCards: React.FC = () => {
       {/* Cards Section */}
       <div className={styles.cardscontainer}>
         <div className={styles.cards}>
-          {filteredCards.map(card => (
-            <button 
-              key={card.id} 
-              className={`${styles.card} ${getCardClass(card.id)}`} 
-            >
-              <p className={styles.cardtext}>{card.text}</p>
-            </button>
-          ))}
+          {cardsData
+            .filter(card => (filter === 'all' ? true : card.category === filter) &&
+              card.text.toLowerCase().includes(searchQuery.toLowerCase()))
+            .map(card => (
+              <button
+                key={card.id}
+                ref={(el) => {
+                  if (el) {
+                    cardRefs.current[card.id] = el;
+                  }
+                }}
+                className={`${styles.card} ${getCardClass(card.id)}`}
+                onMouseEnter={(e) => (e.currentTarget.style.boxShadow = `0px 0px 20px ${getComputedBgColor(card.id)}`)}
+                onMouseLeave={(e) => (e.currentTarget.style.boxShadow = `none`)}
+              >
+                <p className={styles.cardtext}>{card.text}</p>
+              </button>
+            ))}
         </div>
       </div>
     </div>

@@ -90,6 +90,7 @@
     display: flex;
     flex-direction: row;
     white-space: nowrap;
+    margin: 30px 0;
 }
 
 /* Individual Card */
@@ -188,6 +189,7 @@
     background-image: url('/src/assets/BlueCardExample.png');
     background-size: cover;
     background-position: center;
+    background-color: #3498db;
 }
 
 /* Carte ID 2 (Sunshine Memory) */
@@ -195,6 +197,7 @@
     background-image: url('/src/assets/GreenCardExample.png');
     background-size: cover;
     background-position: center;
+    background-color: #2ecc71;
 }
 
 /* Carte ID 3 (Gift Card) */
@@ -202,6 +205,7 @@
     background-image: url('/src/assets/PurpleCardExample.png');
     background-size: cover;
     background-position: center;
+    background-color: #9b59b6
 }
 
 /* Carte ID 4 (Travel Card) */
@@ -209,6 +213,7 @@
     background-image: url('/src/assets/YellowCardExample.png');
     background-size: cover;
     background-position: center;
+    background-color: #f1c40f;
 }
 
 /* Carte ID 5 (Bonus Card) */
@@ -216,4 +221,5 @@
     background-image: url('/src/assets/RedCardExample.png');
     background-size: cover;
     background-position: center;
+    background-color: #f1690f;
 }
