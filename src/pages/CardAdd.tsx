@@ -43,8 +43,16 @@ const CardAdd: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (!formData.title || !formData.date || !formData.message || !media) {
-      alert("Please fill out all fields and upload a file.");
+    console.log("Form data:", formData);
+    console.log("Media:", media);
+
+    if (!formData.title || !formData.date || !formData.message) {
+      alert("Please fill out all text fields.");
+      return;
+    }
+
+    if (!media) {
+      alert("Please upload a photo or video.");
       return;
     }
 
@@ -59,8 +67,8 @@ const CardAdd: React.FC = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      alert("Upload successful!");
       console.log(response.data);
+      navigate("/post-created"); // Navigate to the post created page
 
       navigate("/dashboard");
 
@@ -102,9 +110,7 @@ const CardAdd: React.FC = () => {
               <input type="file" accept="video/*" onChange={handleFileChange} style={{ display: "none" }} />
             </label>
           </div>
-          <button type="button" className={styles.cancelButton} onClick={() => navigate("/dashboard")}>
-            Cancel
-          </button>
+            <button type="button" className={styles.cancelButton} onClick={() => navigate(-1)}>Cancel</button>
         </div>
         <div className={styles.form}>
           <h2>Card Title</h2>
@@ -113,9 +119,10 @@ const CardAdd: React.FC = () => {
           <input type="date" name="date" className={styles.dateField} value={formData.date} onChange={handleInputChange} />
           <h2>Message</h2>
           <input type="text" name="message" className={styles.inputField} value={formData.message} onChange={handleInputChange} />
-          <button type="submit" className={styles.submitButton}>
-            Submit
-          </button>
+          <div className={styles.buttonContainer}>
+            <button type="button" className={styles.cancelButtonMobile} onClick={() => navigate(-1)}>Cancel</button>
+            <button type="submit" className={styles.submitButton}>Submit</button>
+          </div>
         </div>
       </form>
     </div>

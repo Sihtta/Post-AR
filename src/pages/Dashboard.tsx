@@ -44,10 +44,13 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  const navigateToEdit = (id: number, imageUrl: string) => {
+    navigate(`/cardEdit/${id}`, { state: { imageUrl } });
+  };
+
   return (
     <div className={styles.dashboardWrapper}>
       <Navbar />
-
       <div className={styles.content}>
         <img src={user?.avatar} alt="Profile" className={styles.profileImage} />
         <div className={styles.textContainer}>
@@ -55,16 +58,12 @@ const Dashboard: React.FC = () => {
             Hello <br />
             <span className={styles.userName}>{user ? user.name : "User"}</span>
           </h1>
-          {/* Bouton Add Card en desktop */}
           <button onClick={() => navigate("/cardAdd")} className={`${styles.addButton} ${styles.desktopOnly}`}>
             Add Card
           </button>
         </div>
       </div>
-
-      {/* Section My Cards */}
       <div className={styles.myCardsSection}>
-        {/* Barre de recherche */}
         <div className={styles.searchcontainer}>
           <input
             className={styles.searchbar}
@@ -74,13 +73,9 @@ const Dashboard: React.FC = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-
-        {/* Bouton Add Card en mobile */}
         <button onClick={() => navigate("/cardAdd")} className={`${styles.addButton} ${styles.mobileOnly}`}>
           Add Card
         </button>
-
-        {/* Filtres */}
         <div className={styles.buttonContainer}>
           <button className={`${styles.allbutton} ${filter === 'all' ? styles.active : ''}`} onClick={() => setFilter('all')}>
             All
@@ -92,19 +87,20 @@ const Dashboard: React.FC = () => {
             Received
           </button>
         </div>
-
-        {/* Cartes */}
         <div className={styles.cardscontainer}>
           <div className={styles.cards}>
             {filteredCards.map(card => (
-              <button key={card.id} className={`${styles.card} ${getCardClass(card.id)}`}>
+              <button 
+                key={card.id} 
+                className={`${styles.card} ${getCardClass(card.id)}`}
+                onClick={() => navigateToEdit(card.id, profilePic)}
+              >
                 <p className={styles.cardtext}>{card.text}</p>
               </button>
             ))}
           </div>
         </div>
       </div>
-
       <div className={`${styles.mobileNavbarWrapper} mobileNavbarOnly`}>
         <MobileNavbar />
       </div>
