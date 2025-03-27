@@ -6,7 +6,7 @@ import { CheckCircle } from 'lucide-react';
 const VerifyEmail: React.FC = () => {
   return (
     <div className={styles['auth-container']} style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <div className={styles['login-box']} style={{ padding: '30px', width: '300px', minHeight: '200px' }}>
+      <div className={styles['login-box']} style={{ padding: '30px', width: '500px', minHeight: '300px' }}>
         <h1 className={styles['title']}>Verify Your Email</h1>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <CheckCircle size={40} color="white" />
