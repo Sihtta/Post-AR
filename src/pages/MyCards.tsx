@@ -1,11 +1,14 @@
 import React, { useState, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import styles from '../styles/MyCards.module.css';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const MyCards: React.FC = () => {
+  const navigate = useNavigate();
   const [filter, setFilter] = useState<'all' | 'sent' | 'received'>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const cardRefs = useRef<{ [key: number]: HTMLButtonElement | null }>({});
+
 
   const cardsData = [
     { id: 1, text: 'Main Balance', category: 'all' },
@@ -89,6 +92,7 @@ const MyCards: React.FC = () => {
                 className={`${styles.card} ${getCardClass(card.id)}`}
                 onMouseEnter={(e) => (e.currentTarget.style.boxShadow = `0px 0px 20px ${getComputedBgColor(card.id)}`)}
                 onMouseLeave={(e) => (e.currentTarget.style.boxShadow = `none`)}
+                onClick={() => navigate("/CardEdit")}
               >
                 <p className={styles.cardtext}>{card.text}</p>
               </button>
