@@ -71,7 +71,7 @@ body {
 .form h2 {
     font-size: small;
     color: #9b96ab9a;
-    
+    margin-top: 3%;
 }
 .inputField,
 .dateField {
@@ -99,7 +99,7 @@ body {
 .cancelButton {
     font-size: 18px;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 30px;
     width: 100%;
     max-width: 200px;
     height: 45px;
@@ -111,7 +111,6 @@ body {
 .submitButton {
     font-size: 18px;
     font-weight: bold;
-    margin-top: 20px;
     width: 200px;
     height: 45px;
     background-color: white;
