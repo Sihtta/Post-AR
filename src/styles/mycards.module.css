@@ -3,14 +3,16 @@
     background-color: white;
     width: 100vw;
     min-height: 100vh;
-    padding-left: 30px;
 }
+
 
 .header {
     margin: 50px 0 20px;
     padding-top: 70px;
     font-size: 300%;
+    margin-left: 50px;
 }
+
 
 /* ========== Search Bar ========== */
 .searchcontainer {
@@ -20,7 +22,7 @@
 }
 
 .searchbar {
-    margin: 20px 0;
+    margin: 20px 20px;
     width: 90%;
     height: 3vw;
     border: none;
@@ -44,7 +46,7 @@
   border: none;
   background: none;
   font-size: 16px;
-  margin: 0 10px 20px;
+  margin: 20px 20px 20px;
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
@@ -95,7 +97,6 @@
     margin: 0 10px 20px 20px;
     height: 300px;
     min-width: 475px;
-    background-image: url('src/assets/BlueCardExample.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 600px;
@@ -144,11 +145,10 @@
     font-size: 25px;
 }
 
-/* Background for Nomadic Card */
 .nomandiccarddiv {
     width: 130px;
     height: 80px;
-    background-image: url('src/assets/background.png');
+    background-image: url('src/assets/BlueCardExample.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 300px;
@@ -171,4 +171,49 @@
         align-items: center;
         justify-content: center;
     }
+
+    .card {
+        margin: 0 10px 20px 20px;
+        height: 250px;
+        min-width: 340px;
+        background-size: 600px;
+        border-radius: 40px / 80px;
+        color: white;
+        border: none;
+    }
+}
+
+/* Carte ID 1 */
+.mainBalanceCard {
+    background-image: url('/src/assets/BlueCardExample.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Carte ID 2 (Sunshine Memory) */
+.sunshineCard {
+    background-image: url('/src/assets/GreenCardExample.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Carte ID 3 (Gift Card) */
+.giftCard {
+    background-image: url('/src/assets/PurpleCardExample.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Carte ID 4 (Travel Card) */
+.travelCard {
+    background-image: url('/src/assets/YellowCardExample.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Carte ID 5 (Bonus Card) */
+.bonusCard {
+    background-image: url('/src/assets/RedCardExample.png');
+    background-size: cover;
+    background-position: center;
 }
