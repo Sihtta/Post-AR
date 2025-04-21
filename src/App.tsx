@@ -22,7 +22,7 @@ const App: React.FC = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/cardAdd" element={<CardAdd />} />
-          <Route path="/cardEdit" element={<CardEdit />} />
+          <Route path="/cardEdit/:id" element={<CardEdit />} />
           <Route path="/MyCards" element={<MyCards />} />
           <Route path="/post-created" element={<PostCreatedPage />} />
         </Route>

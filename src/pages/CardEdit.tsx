@@ -9,7 +9,7 @@ import styles from "../styles/cardEdit.module.css";
 // chatgpt has been used for parts of the backend of this page
 
 const CardEdit: React.FC = () => {
-  const { id } = useParams(); // get card id from URL
+  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
   const [card, setCard] = useState({
@@ -26,15 +26,67 @@ const CardEdit: React.FC = () => {
     imageUrl: "",
   });
 
+  // Fonction pour déterminer le type de carte en fonction de l'ID
+  const getCardType = (cardId: string | undefined) => {
+    if (!cardId) return "blue";
+    
+    // On convertit l'ID en nombre pour le switch
+    const idNum = parseInt(cardId);
+    switch(idNum) {
+      case 1:
+        return "blue";
+      case 2:
+        return "green";
+      case 3:
+        return "purple";
+      case 4:
+        return "yellow";
+      case 5:
+        return "red";
+      default:
+        return "blue";
+    }
+  };
+
+  // Fonction pour obtenir l'image de la carte en fonction du type
+  const getCardImage = (cardType: string) => {
+    switch(cardType) {
+      case "blue":
+        return "/src/assets/BlueCardExample.png";
+      case "green":
+        return "/src/assets/GreenCardExample.png";
+      case "purple":
+        return "/src/assets/PurpleCardExample.png";
+      case "yellow":
+        return "/src/assets/YellowCardExample.png";
+      case "red":
+        return "/src/assets/RedCardExample.png";
+      default:
+        return "/src/assets/BlueCardExample.png";
+    }
+  };
+
   useEffect(() => {
-    axios.get(`http://localhost:5000/cards/${id}`)
-      .then((response) => {
-        setCard(response.data); // update the state with fetched card data
-        setInitialCard(response.data); // store the initial data to reset later
-      })
-      .catch((error) => {
-        console.error("Error fetching card:", error);
-      });
+    // Simulation des données de la carte en fonction de l'ID
+    const cardTypes = {
+      1: { title: "Main Balance", color: "blue" },
+      2: { title: "Sunshine Memory", color: "green" },
+      3: { title: "Gift Card", color: "purple" },
+      4: { title: "Travel Card", color: "yellow" },
+      5: { title: "Bonus Card", color: "red" }
+    };
+
+    const cardId = id ? parseInt(id) : 1;
+    const cardData = cardTypes[cardId as keyof typeof cardTypes] || cardTypes[1];
+
+    const mockCard = {
+      title: cardData.title,
+      date: "2024-03-27",
+      message: "Card Message",
+      imageUrl: "",
+    };
+    setCard(mockCard);
+    setInitialCard(mockCard);
   }, [id]);
 
   // this function updates the state when the user types in an input field
@@ -50,9 +102,10 @@ const CardEdit: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/cards/${id}`, card);
+      // Simulation de la mise à jour
+      console.log("Card updated:", card);
       alert("Card updated successfully!");
-      navigate("/"); // redirect to homepage
+      navigate("/dashboard");
     } catch (error) {
       console.error("Update failed:", error);
     }
@@ -61,9 +114,10 @@ const CardEdit: React.FC = () => {
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this card?")) {
       try {
-        await axios.delete(`http://localhost:5000/cards/${id}`);
+        // Simulation de la suppression
+        console.log("Card deleted:", id);
         alert("Card deleted!");
-        navigate("/");
+        navigate("/dashboard");
       } catch (error) {
         console.error("Delete failed:", error);
       }
@@ -81,9 +135,9 @@ const CardEdit: React.FC = () => {
       <div className={styles.cardContainer}>
         <div className={styles.preview}>
           {card.imageUrl ? (
-            <img src={card.imageUrl} className={styles.exampleImage} alt="Card Example" />
+            <img src={card.imageUrl} className={styles.exampleImage} alt={card.title || "Card"} />
           ) : (
-            <h2 className="noUrl">No image available</h2>
+            <img src={getCardImage(getCardType(id))} className={styles.exampleImage} alt="Card" />
           )}
         </div>
         <div className={styles.form}>

@@ -108,7 +108,7 @@ const Dashboard: React.FC = () => {
                 className={`${styles.card} ${getCardClass(card.id)}`}
                 onMouseEnter={(e) => (e.currentTarget.style.boxShadow = `0px 0px 15px ${getComputedBgColor(card.id)}`)}
                 onMouseLeave={(e) => (e.currentTarget.style.boxShadow = `none`)}
-                onClick={() => navigate(`/CardEdit`)}
+                onClick={() => navigate(`/CardEdit/${card.id}`)}
               >
                 <p className={styles.cardtext}>{card.text}</p>
               </button>

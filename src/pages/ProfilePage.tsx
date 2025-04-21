@@ -1,13 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/profile.module.css';
 import Navbar from '../components/Navbar';
 import profilePic from '../assets/profile.png';
 import { FaEdit, FaCheckCircle } from 'react-icons/fa';
 
 const ProfilePage: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.profileWrapper}>
-      {}
       <Navbar />
       
       <div className={styles.profileContainer}>
@@ -39,7 +41,7 @@ const ProfilePage: React.FC = () => {
           <div className={styles.options}>
             <button>About App</button>
             <button>Contact us</button>
-            <button className={styles.logout}>Logout</button>
+            <button className={styles.logout} onClick={() => navigate('/')}>Logout</button>
           </div>
         </div>
       </div>

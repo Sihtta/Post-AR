@@ -15,9 +15,28 @@ const Login: React.FC = () => {
     };
   }, []);
 
+  const handleSocialLogin = (provider: 'google' | 'apple') => {
+    // Simulation de la connexion
+    alert(`Connexion avec ${provider} en cours...`);
+    // Après 1 seconde, on simule une connexion réussie
+    setTimeout(() => {
+      alert(`Connexion avec ${provider} réussie !`);
+      navigate('/dashboard');
+    }, 1000);
+  };
+
+  const handleClassicLogin = () => {
+    // Simulation de la connexion classique
+    alert('Connexion en cours...');
+    // Après 1 seconde, on simule une connexion réussie
+    setTimeout(() => {
+      alert('Connexion réussie !');
+      navigate('/dashboard');
+    }, 1000);
+  };
+
   return (
     <div className={styles['auth-container']}>
-      {}
       <h2 className={styles['welcome-title']}>Welcome <br></br> Back !</h2>
       
       <div className={styles['login-box']}>
@@ -29,7 +48,7 @@ const Login: React.FC = () => {
         </p>
         <div className={styles['buttons']}>
           <button className={`${styles['button']} ${styles['secondary']}`} onClick={() => navigate('/')}>Back</button>
-          <button className={`${styles['button']} ${styles['primary']}`}>Log in →</button>
+          <button className={`${styles['button']} ${styles['primary']}`} onClick={handleClassicLogin}>Log in →</button>
         </div>
         <div className={styles['separator']}>
           <span className={styles['line']}></span>
@@ -37,8 +56,12 @@ const Login: React.FC = () => {
           <span className={styles['line']}></span>
         </div>
         <div className={styles['social-login']}>
-          <button className={styles['social-button']}><img src={googleIcon} alt="Google" /></button>
-          <button className={styles['social-button']}><img src={appleIcon} alt="Apple" /></button>
+          <button className={styles['social-button']} onClick={() => handleSocialLogin('google')}>
+            <img src={googleIcon} alt="Google" />
+          </button>
+          <button className={styles['social-button']} onClick={() => handleSocialLogin('apple')}>
+            <img src={appleIcon} alt="Apple" />
+          </button>
         </div>
         <p className={styles['register-text']}>Not a member? <a href="/signup">Register now</a></p>
       </div>
