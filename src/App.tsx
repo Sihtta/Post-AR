@@ -10,10 +10,11 @@ import MyCards from './pages/MyCards';
 import Layout from './components/Layout';
 import Dashboard from "./pages/Dashboard";
 import PostCreatedPage from './pages/postCreatedPage';
+import './styles/global.css';
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename="/Post-AR">
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />

@@ -68,7 +68,7 @@ const CardAdd: React.FC = () => {
       });
 
       console.log(response.data);
-      navigate("/post-created"); // Navigate to the post created page
+      navigate("/post-created"); 
 
       navigate("/dashboard");
 
@@ -94,7 +94,7 @@ const CardAdd: React.FC = () => {
             )
           ) : (
             <img
-              src="src/assets/walletCard3.png"
+              src="/Post-AR/walletCard3.png"
               className={styles.exampleImage}
               alt="Card Example"
             />

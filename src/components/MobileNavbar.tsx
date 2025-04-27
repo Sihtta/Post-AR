@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FaHome, FaUser, FaPlus, FaTimes, FaQrcode, FaSync, FaRegCreditCard } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaHome, FaUser, FaPlus, FaTimes, FaSync } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import styles from '../styles/mobileNavbar.module.css';
 import { MdQrCode, MdCreditCard } from 'react-icons/md';

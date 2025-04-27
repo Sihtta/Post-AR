@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import MobileNavbar from '../components/MobileNavbar';
 import { Link, useLocation } from 'react-router-dom';
 import styles from '../styles/navbar.module.css';

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import styles from '../styles/MyCards.module.css';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const MyCards: React.FC = () => {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ const MyCards: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <Navbar />
-      <h1 className={styles.header}>My Cards</h1>
+      <h1 className={styles.title}>My Cards</h1>
 
       {/* Search Bar */}
       <div className={styles.searchcontainer}>

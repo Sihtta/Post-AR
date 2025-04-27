@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 import Navbar from "../components/Navbar";
 import styles from "../styles/cardEdit.module.css";
+import blueCard from "../assets/BlueCardExample.png";
+import greenCard from "../assets/GreenCardExample.png";
+import purpleCard from "../assets/PurpleCardExample.png";
+import yellowCard from "../assets/YellowCardExample.png";
+import redCard from "../assets/RedCardExample.png";
 
 // im adding a bit of commentairy so its easier to see what does what.
 // i have almost no experience with backend and databases so change what you need to change
@@ -13,13 +17,6 @@ const CardEdit: React.FC = () => {
   const navigate = useNavigate();
 
   const [card, setCard] = useState({
-    title: "",
-    date: "",
-    message: "",
-    imageUrl: "",
-  });
-
-  const [initialCard, setInitialCard] = useState({
     title: "",
     date: "",
     message: "",
@@ -52,17 +49,17 @@ const CardEdit: React.FC = () => {
   const getCardImage = (cardType: string) => {
     switch(cardType) {
       case "blue":
-        return "/src/assets/BlueCardExample.png";
+        return blueCard;
       case "green":
-        return "/src/assets/GreenCardExample.png";
+        return greenCard;
       case "purple":
-        return "/src/assets/PurpleCardExample.png";
+        return purpleCard;
       case "yellow":
-        return "/src/assets/YellowCardExample.png";
+        return yellowCard;
       case "red":
-        return "/src/assets/RedCardExample.png";
+        return redCard;
       default:
-        return "/src/assets/BlueCardExample.png";
+        return blueCard;
     }
   };
 
@@ -86,17 +83,11 @@ const CardEdit: React.FC = () => {
       imageUrl: "",
     };
     setCard(mockCard);
-    setInitialCard(mockCard);
   }, [id]);
 
   // this function updates the state when the user types in an input field
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCard({ ...card, [e.target.name]: e.target.value });
-  };
-
-  // resets form to the initially fetched data
-  const handleReset = () => {
-    setCard(initialCard);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {

@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/profile.module.css';
 import Navbar from '../components/Navbar';
-import profilePic from '../assets/profile.png';
 import { FaEdit, FaCheckCircle } from 'react-icons/fa';
 
 const ProfilePage: React.FC = () => {
@@ -18,7 +17,7 @@ const ProfilePage: React.FC = () => {
           <div className={styles.profileCard}>
             <div className={styles.profileHeader}>
               <div className={styles.imageContainer}>
-                <img src={profilePic} alt="Profile" className={styles.profilePic} />
+                <img src="/Post-AR/profile.png" alt="Profile" className={styles.profilePic} />
                 <FaCheckCircle className={styles.verifiedIcon} />
               </div>
               <div className={styles.userInfo}>
